@@ -26,6 +26,28 @@ class LinkedList
     sound
   end
 
+  def insert(position, sound)
+    if @head == nil
+      @head = Node.new(sound)
+    else
+      position = position
+      current_node_1 = @head
+      position.times do
+        current_node_1 = current_node_1.next_node
+      end
+      new_next_node = current_node_1
+
+      iterations = position -= 1
+      current_node_2 = @head
+      iterations.times do
+        current_node_2 = current_node_2.next_node
+      end
+      current_node_2.next_node = Node.new(sound)
+      current_node_2.next_node.next_node = new_next_node
+    end
+    sound
+  end
+
   def find_last_node
     current_node = @head
     until current_node.next_node == nil
