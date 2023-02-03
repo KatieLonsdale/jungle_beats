@@ -66,9 +66,13 @@ RSpec.describe LinkedList do
       
       list.append('doop')
       list.append('deep')
+      list.append('plop')
 
       expect(list.head.next_node.data).to eq('deep')
-      expect(list.head.next_node.next_node). to eq(nil)
+      expect(list.head.next_node.next_node.data).to eq('plop')
+      expect(list.head.next_node.next_node.next_node).to eq (nil)
+      expect(list.find_last_node.data).to eq('plop')
+      expect(list.find_last_node.next_node).to eq (nil)
     end
 
     it 'tells us how many nodes are in the list' do
@@ -76,8 +80,9 @@ RSpec.describe LinkedList do
       
       list.append('doop')
       list.append('deep')
+      list.append('plop')
 
-      expect(list.count). to eq 2
+      expect(list.count). to eq 3
     end
 
     it 'generates string of elements in list' do
@@ -85,8 +90,9 @@ RSpec.describe LinkedList do
       
       list.append('doop')
       list.append('deep')
+      list.append('plop')
 
-      expect(list.to_string).to eq('doop deep')
+      expect(list.to_string).to eq('doop deep plop')
     end
   end
 
