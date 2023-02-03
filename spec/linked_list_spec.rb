@@ -37,6 +37,7 @@ RSpec.describe LinkedList do
       list.append('doop')
       
       expect(list.count).to eq 1
+
     end
     
     it 'returns 0 if there are no nodes yet' do
@@ -60,6 +61,36 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq(nil)
     end
 
+  end
+
+  describe '::can have multiple nodes' do
+    it 'can append another node' do
+      list = LinkedList.new
+      
+      list.append('doop')
+      list.append('deep')
+
+      expect(list.head.next_node.data).to eq('deep')
+      expect(list.head.next_node.next_node.data). to eq(nil)
+    end
+
+    it 'tells us how many nodes are in the list' do
+      list = LinkedList.new
+      
+      list.append('doop')
+      list.append('deep')
+
+      expect(list.count). to eq 2
+    end
+
+    it 'generates string of elements in list' do
+      list = LinkedList.new
+      
+      list.append('doop')
+      list.append('deep')
+
+      expect(list.to_string).to eq('doop deep')
+    end
   end
 
 end
