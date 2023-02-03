@@ -1,5 +1,3 @@
-# fixed append, upload changes all files to GH
-
 require 'rspec'
 require "./lib/linked_list"
 require "./lib/node"
@@ -63,17 +61,17 @@ RSpec.describe LinkedList do
   end
 
   describe '::can have multiple nodes' do
-    xit 'can append another node' do
+    it 'can append another node' do
       list = LinkedList.new
       
       list.append('doop')
       list.append('deep')
 
       expect(list.head.next_node.data).to eq('deep')
-      expect(list.head.next_node.next_node.data). to eq(nil)
+      expect(list.head.next_node.next_node). to eq(nil)
     end
 
-    xit 'tells us how many nodes are in the list' do
+    it 'tells us how many nodes are in the list' do
       list = LinkedList.new
       
       list.append('doop')
@@ -82,7 +80,7 @@ RSpec.describe LinkedList do
       expect(list.count). to eq 2
     end
 
-    xit 'generates string of elements in list' do
+    it 'generates string of elements in list' do
       list = LinkedList.new
       
       list.append('doop')
