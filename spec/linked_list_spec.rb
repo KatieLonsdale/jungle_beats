@@ -1,3 +1,5 @@
+# at end = go back and change describe names based on categories
+
 require 'rspec'
 require "./lib/linked_list"
 require "./lib/node"
@@ -25,7 +27,6 @@ RSpec.describe LinkedList do
       expect(list.head.data).to eq('doop')
       expect(list.head.next_node).to eq(nil)
       expect(list.head).to be_instance_of(Node)
-      # test it adds to the front?
     end
 
     it 'tells us how many nodes are in list' do
@@ -60,7 +61,7 @@ RSpec.describe LinkedList do
 
   end
 
-  describe '::can have multiple nodes' do
+  describe '::iteration 1 pt 2' do
     it 'can append another node' do
       list = LinkedList.new
       
@@ -95,5 +96,24 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq('doop deep plop')
     end
   end
+
+  describe '::iteration 2'do
+    it 'adds nodes to front of list' do
+      list = LinkedList.new
+      
+      list.append('plop')
+      list.append('suu')
+      list.prepend('dop')
+
+      expect(list.count).to eq 3
+      expect(list.head.data).to eq ('dop')
+      expect(list.to_string).to eq('dop plop suu')
+    end
+
+    # it 'inserts a node at a given position' do
+
+    # end
+  end
+
 
 end
