@@ -41,9 +41,23 @@ RSpec.describe LinkedList do
     
     it 'returns 0 if there are no nodes yet' do
       list = LinkedList.new
-
+      
       expect(list.count).to eq 0
+      
+    end
+    
+    it 'generates string of elements in list' do
+      list = LinkedList.new
+      
+      list.append('doop')
 
+      expect(list.to_string).to eq('doop')
+    end
+
+    it 'returns nil if there are no nodes yet' do
+      list = LinkedList.new
+
+      expect(list.to_string).to eq(nil)
     end
 
   end
