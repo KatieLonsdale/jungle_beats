@@ -10,10 +10,17 @@ class LinkedList
       @head = Node.new(sound) 
       sound
     else
-      @head.next_node = Node.new(sound)
-      # will need to fix this when adding more nodes
+      self.find_last_node.next_node = Node.new(sound)
       sound
     end
+  end
+
+  def find_last_node
+    current_node = @head
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+    end
+    current_node
   end
 
   def count
