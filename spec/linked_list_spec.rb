@@ -17,7 +17,7 @@ RSpec.describe LinkedList do
     end
   end
   
-  describe '::add new nodes' do
+  describe '::basic functionality' do
     it 'adds new data to list' do
       list = LinkedList.new
 
@@ -31,13 +31,21 @@ RSpec.describe LinkedList do
       # test it adds to the front?
     end
 
-    # it 'returns the next node' do
-    #   list = LinkedList.new
+    it 'tells us how many nodes are in list' do
+      list = LinkedList.new
+      
+      list.append('doop')
+      
+      expect(list.count).to eq 1
+    end
+    
+    it 'returns 0 if there are no nodes yet' do
+      list = LinkedList.new
 
-    #   list.append('doop')
+      expect(list.count).to eq 0
 
-    #   expect(list.head.next_node).to eq(nil)
-    # end
+    end
+
   end
 
 end
