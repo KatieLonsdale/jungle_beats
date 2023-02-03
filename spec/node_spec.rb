@@ -1,5 +1,5 @@
-require './lib/node'
 require 'rspec'
+require './lib/node'
 
 RSpec.describe Node do
   describe '#initialize' do
