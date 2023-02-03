@@ -15,6 +15,17 @@ class LinkedList
     end
   end
 
+  def prepend(sound)
+    if @head == nil
+      @head = Node.new(sound)
+    else
+      new_head = Node.new(sound)
+      new_head.next_node = @head
+      @head = new_head
+    end
+    sound
+  end
+
   def find_last_node
     current_node = @head
     until current_node.next_node == nil
@@ -39,14 +50,14 @@ class LinkedList
 
   def to_string
     if @head != nil
-      array = []
+      string = ''
       current_node = @head
       until current_node.next_node == nil
-        array.push(current_node.data)
+        string.concat("#{current_node.data} ")
         current_node = current_node.next_node
       end
-      array.push(current_node.data)
-      array.join(' ')
+      string.concat("#{current_node.data}")
+      string
     else
       nil
     end
