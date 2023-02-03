@@ -24,4 +24,19 @@ class LinkedList
     end
   end
 
+  def to_string
+    if @head != nil
+      array = []
+      current_node = @head
+      until current_node.next_node == nil
+        current_node = current_node.next_node
+        array.push(current_node.data)
+      end
+      array.push(current_node.data)
+      array.join(' ')
+    else
+      nil
+    end
+  end
+
 end
