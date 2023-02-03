@@ -11,6 +11,7 @@ class LinkedList
       sound
     else
       @head.next_node = Node.new(sound)
+      # will need to fix this when adding more nodes
       sound
     end
   end
@@ -34,8 +35,8 @@ class LinkedList
       array = []
       current_node = @head
       until current_node.next_node == nil
-        current_node = current_node.next_node
         array.push(current_node.data)
+        current_node = current_node.next_node
       end
       array.push(current_node.data)
       array.join(' ')
