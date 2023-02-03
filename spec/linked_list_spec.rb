@@ -26,6 +26,7 @@ RSpec.describe LinkedList do
       expect(list.append('doop')).to eq('doop')
       # will this run append twice?
       expect(list.head.data).to eq('doop')
+      expect(list.head.next_node).to eq(nil)
       expect(list.head).to be_instance_of(Node)
       # test it adds to the front?
     end
