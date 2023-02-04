@@ -64,6 +64,21 @@ class LinkedList
     end
   end
 
+  def includes?(sound)
+    answer = nil
+    if @head == nil
+      false
+    else
+      iterations = self.count
+      current_node = @head
+      iterations.times do
+        current_node.data == sound ? answer = true : nil
+        current_node = current_node.next_node
+      end
+      answer == true ? true : false
+    end
+  end
+
   def find_last_node
     # add testing for this method?
     current_node = @head
