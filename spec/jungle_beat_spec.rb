@@ -19,10 +19,16 @@ RSpec.describe LinkedList do
     end
   end
 
-  # describe ':iteration 3' do
-  #   it 'appends multiple nodes at once' do
-  #     jb = JungleBeat.new
-  #   end
+  describe ':iteration 3' do
+    it 'appends multiple nodes at once' do
+      jb = JungleBeat.new
 
-  # end
+      jb.append('deep doo ditt')
+
+      expect(jb.list.to_string).to eq('deep doo ditt')
+      expect(jb.list.head.data).to eq('deep')
+      expect(jb.list.head.next_node.data).to eq('doo')
+    end
+
+  end
 end
