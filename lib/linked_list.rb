@@ -30,7 +30,6 @@ class LinkedList
     if @head == nil
       @head = Node.new(sound)
     else
-      position = position
       current_node_1 = @head
       position.times do
         current_node_1 = current_node_1.next_node
@@ -48,7 +47,25 @@ class LinkedList
     sound
   end
 
+  def find(position, number_of_elements)
+    if self.count <= position
+      nil
+    else
+      current_node = @head
+      position.times do
+        current_node = current_node.next_node
+      end
+      string_to_return = ''
+      number_of_elements.times do
+        string_to_return.concat("#{current_node.data} ")
+        current_node = current_node.next_node
+      end
+      string_to_return.delete_suffix(' ')
+    end
+  end
+
   def find_last_node
+    # add testing for this method?
     current_node = @head
     until current_node.next_node == nil
       current_node = current_node.next_node
@@ -81,7 +98,7 @@ class LinkedList
       string.concat("#{current_node.data}")
       string
     else
-      nil
+      ''
     end
   end
 
