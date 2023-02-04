@@ -33,7 +33,7 @@ class LinkedList
       last_node = @head
       @head = nil
       last_node.data
-      require 'pry'; binding.pry
+      # require 'pry'; binding.pry
     else 
       last_node = self.find_last_node
       current_node = @head
@@ -123,6 +123,7 @@ class LinkedList
 
   def to_string
     if @head != nil
+      require 'pry'; binding.pry
       string = ''
       current_node = @head
       until current_node.next_node == nil
