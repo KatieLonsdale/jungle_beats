@@ -26,6 +26,25 @@ class LinkedList
     sound
   end
 
+  def pop
+    if @head == nil
+      ''
+    elsif @head.next_node == nil
+      last_node = @head
+      @head = nil
+      last_node.data
+      require 'pry'; binding.pry
+    else 
+      last_node = self.find_last_node
+      current_node = @head
+      until current_node.next_node == last_node
+        current_node = current_node.next_node
+      end
+      current_node.next_node = nil
+      last_node.data
+    end
+  end
+
   def insert(position, sound)
     if @head == nil
       @head = Node.new(sound)
