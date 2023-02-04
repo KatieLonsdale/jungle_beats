@@ -56,7 +56,7 @@ RSpec.describe LinkedList do
     it 'returns nil if there are no nodes yet' do
       list = LinkedList.new
 
-      expect(list.to_string).to eq(nil)
+      expect(list.to_string).to eq('')
     end
 
   end
@@ -122,6 +122,20 @@ RSpec.describe LinkedList do
         expect(list.to_string).to eq('dop woo plop suu')
         expect(list.head.next_node.data).to eq('woo')
         expect(list.head.next_node.next_node.data).to eq('plop')
+    end
+
+    it 'can find x elements at index positions' do
+      list = LinkedList.new
+        
+        list.append('deep')
+        list.append('woo')
+        list.append('shi')
+        list.append('shu')
+        list.append('blop')
+
+        expect(list.find(2, 1)).to eq('shi')
+        expect(list.find(1, 3)).to eq('woo shi shu')
+        expect(list.find(7, 1)).to eq(nil)
     end
   end
 
