@@ -30,5 +30,24 @@ RSpec.describe LinkedList do
       expect(jb.list.head.next_node.data).to eq('doo')
     end
 
+    it 'counts list length' do
+      jb = JungleBeat.new
+
+      jb.append('deep doo ditt')
+
+      expect(jb.count).to eq 3
+
+      jb.append('woo hoo shu')
+
+      expect(jb.count).to eq 6
+    end
+
+    it 'plays the list' do
+      jb = JungleBeat.new
+
+      jb.append('deep doo ditt woo hoo shu')
+
+      jb.play
+    end
   end
 end
