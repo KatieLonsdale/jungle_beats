@@ -19,7 +19,7 @@ RSpec.describe LinkedList do
     end
   end
 
-  describe ':iteration 3' do
+  describe '#append' do
     it 'appends multiple nodes at once' do
       jb = JungleBeat.new
 
@@ -28,8 +28,17 @@ RSpec.describe LinkedList do
       expect(jb.list.to_string).to eq('deep doo ditt')
       expect(jb.list.head.data).to eq('deep')
       expect(jb.list.head.next_node.data).to eq('doo')
+
+      jb.append('woo hoo shu')
+
+      expect(jb.list.to_string).to eq('deep doo ditt woo hoo shu')
+      expect(jb.list.head.data).to eq('deep')
+      expect(jb.list.find_last_node.data).to eq('shu')
     end
 
+  end
+
+  describe '#count' do
     it 'counts list length' do
       jb = JungleBeat.new
 
@@ -41,13 +50,16 @@ RSpec.describe LinkedList do
 
       expect(jb.count).to eq 6
     end
+  end
 
+  describe '#play' do
     it 'plays the list' do
       jb = JungleBeat.new
 
       jb.append('deep doo ditt woo hoo shu')
 
       jb.play
+      # how to test this?
     end
   end
 end
