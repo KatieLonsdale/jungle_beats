@@ -65,15 +65,22 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq('dop woo plop suu')
       expect(list.head.next_node.data).to eq('woo')
       expect(list.head.next_node.next_node.data).to eq('plop')
-      # add test if position is greater than the count
     end
+
+    it 'returns error message if position does not exist' do
+      list = LinkedList.new
+      
+      list.append('plop')
+      list.append('suu')
+      
+      expect(list.insert(3, "woo")).to eq('Error: Position does not exist. Please choose an index position 0-2.')
+    end
+
   end
 
   describe '#pop' do
     it 'removes the last node' do
       list = LinkedList.new
-      
-      expect(list.pop).to eq('')
       
       list.append('deep')
       list.append('woo')
@@ -85,11 +92,21 @@ RSpec.describe LinkedList do
       list.pop
       
       expect(list.to_string).to eq('deep woo shi')
+    end
+
+    it 'returns error message if list empty' do
+      list = LinkedList.new
+        
+      expect(list.pop).to eq('Error: list is empty.')
+      expect(list.to_string).to eq('')
+      
+      list.append('deep')
+      list.append('woo')
       
       list.pop
       list.pop
       
-      expect(list.pop).to eq('deep')
+      expect(list.pop).to eq('Error: list is empty.')
       expect(list.to_string).to eq('')
     end
   end
@@ -116,7 +133,7 @@ RSpec.describe LinkedList do
   end
 
   describe '#to_string' do
-    it 'returns string of elements in list' do
+    it 'returns string of nodes in list' do
       list = LinkedList.new
       
       list.append('doop')
@@ -129,7 +146,7 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq('doop deep plop')
     end
 
-    it 'returns nil if there are no nodes' do
+    it 'returns empty string if there are no nodes' do
       list = LinkedList.new
       
       expect(list.to_string).to eq('')
@@ -137,7 +154,7 @@ RSpec.describe LinkedList do
   end
 
   describe '#find' do
-    it 'finds given number of elements at given position' do
+    it 'finds given number of nodes at given position' do
       list = LinkedList.new
       
       list.append('deep')
@@ -150,14 +167,24 @@ RSpec.describe LinkedList do
       expect(list.find(1, 3)).to eq('woo shi shu')
     end
 
-    it 'returns nil if given position does not exit' do
+    it 'returns error message if given position does not exit' do
       list = LinkedList.new
       
       list.append('deep')
       list.append('woo')
       list.append('shi')
 
-      expect(list.find(7, 1)).to eq(nil)
+      expect(list.find(7, 1)).to eq('Error: Position does not exist. Please choose an index position 0-2.')
+    end
+
+    it 'returns error message if not enough nodes to return'do
+      list = LinkedList.new
+        
+      list.append('deep')
+      list.append('woo')
+      list.append('shi')
+
+      expect(list.find(1, 3)).to eq('Error: Not enough sounds to return.')
     end
   end
 
@@ -196,10 +223,10 @@ RSpec.describe LinkedList do
       expect(list.find_last_node.data).to eq('shi')
     end
 
-    it 'returns nil if list empty' do
+    it 'returns error if list empty' do
       list = LinkedList.new
 
-      expect(list.find_last_node).to eq(nil)
+      expect(list.find_last_node).to eq('Error: empty list.')
     end
   end
   
