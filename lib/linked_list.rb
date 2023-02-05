@@ -26,25 +26,6 @@ class LinkedList
     sound
   end
 
-  def pop
-    if @head == nil
-      ''
-    elsif @head.next_node == nil
-      last_node = @head
-      @head = nil
-      last_node.data
-      # require 'pry'; binding.pry
-    else 
-      last_node = self.find_last_node
-      current_node = @head
-      until current_node.next_node == last_node
-        current_node = current_node.next_node
-      end
-      current_node.next_node = nil
-      last_node.data
-    end
-  end
-
   def insert(position, sound)
     if @head == nil
       @head = Node.new(sound)
@@ -62,8 +43,56 @@ class LinkedList
       end
       current_node_2.next_node = Node.new(sound)
       current_node_2.next_node.next_node = new_next_node
+      # try to get both into one block
     end
     sound
+  end
+
+  def pop
+    if @head == nil
+      ''
+    elsif @head.next_node == nil
+      last_node = @head
+      @head = nil
+      last_node.data
+    else 
+      last_node = self.find_last_node
+      current_node = @head
+      until current_node.next_node == last_node
+        current_node = current_node.next_node
+      end
+      current_node.next_node = nil
+      last_node.data
+    end
+  end
+
+  def count
+    if @head != nil
+      count = 1
+      current_node = @head
+      while current_node.next_node != nil
+        current_node = current_node.next_node
+        count += 1
+      end
+      count
+    else
+      0
+    end
+  end
+
+  def to_string
+    if @head != nil
+      string = ''
+      current_node = @head
+      until current_node.next_node == nil
+        string.concat("#{current_node.data} ")
+        current_node = current_node.next_node
+      end
+      string.concat("#{current_node.data}")
+      string
+    else
+      ''
+    end
   end
 
   def find(position, number_of_elements)
@@ -97,44 +126,16 @@ class LinkedList
       answer == true ? true : false
     end
   end
-
+  
   def find_last_node
-    # add testing for this method?
-    current_node = @head
-    until current_node.next_node == nil
-      current_node = current_node.next_node
-    end
-    current_node
-  end
-
-  def count
-    if @head != nil
-      count = 1
-      current_node = @head
-      while current_node.next_node != nil
-        current_node = current_node.next_node
-        count += 1
-      end
-      count
+    if @head == nil
+      nil
     else
-      0
-    end
-  end
-
-  def to_string
-    if @head != nil
-      require 'pry'; binding.pry
-      string = ''
       current_node = @head
       until current_node.next_node == nil
-        string.concat("#{current_node.data} ")
         current_node = current_node.next_node
       end
-      string.concat("#{current_node.data}")
-      string
-    else
-      ''
+      current_node
     end
   end
-
 end
