@@ -6,17 +6,16 @@ class LinkedList
   end
 
   def append(sound)
-    if @head == nil
-      @head = Node.new(sound) 
-      sound
+    if !@head
+      @head = Node.new(sound)
     else
       self.find_last_node.next_node = Node.new(sound)
-      sound
     end
+    sound
   end
 
   def prepend(sound)
-    if @head == nil
+    if !@head
       @head = Node.new(sound)
     else
       new_head = Node.new(sound)
@@ -27,31 +26,29 @@ class LinkedList
   end
 
   def insert(position, sound)
-    if @head == nil
+    if !@head
       @head = Node.new(sound)
+      sound
+    elsif position > self.count
+      "Error: Position does not exist. Please choose an index position 0-#{self.count}."
     else
-      current_node_1 = @head
+      previous_node = nil
+      following_node = @head
       position.times do
-        current_node_1 = current_node_1.next_node
+        previous_node = following_node
+        following_node = following_node.next_node
       end
-      new_next_node = current_node_1
-
-      iterations = position -= 1
-      current_node_2 = @head
-      iterations.times do
-        current_node_2 = current_node_2.next_node
-      end
-      current_node_2.next_node = Node.new(sound)
-      current_node_2.next_node.next_node = new_next_node
-      # try to get both into one block
+      new_node = Node.new(sound)
+      previous_node.next_node = new_node
+      new_node.next_node = following_node
+      sound
     end
-    sound
   end
 
   def pop
-    if @head == nil
-      ''
-    elsif @head.next_node == nil
+    if !@head
+      'Error: list is empty.'
+    elsif !@head.next_node
       last_node = @head
       @head = nil
       last_node.data
@@ -67,12 +64,12 @@ class LinkedList
   end
 
   def count
-    if @head != nil
+    if @head
       count = 1
       current_node = @head
-      while current_node.next_node != nil
-        current_node = current_node.next_node
+      until !current_node.next_node
         count += 1
+        current_node = current_node.next_node
       end
       count
     else
@@ -81,10 +78,10 @@ class LinkedList
   end
 
   def to_string
-    if @head != nil
+    if @head
       string = ''
       current_node = @head
-      until current_node.next_node == nil
+      until !current_node.next_node
         string.concat("#{current_node.data} ")
         current_node = current_node.next_node
       end
@@ -97,7 +94,9 @@ class LinkedList
 
   def find(position, number_of_elements)
     if self.count <= position
-      nil
+      "Error: Position does not exist. Please choose an index position 0-#{self.count - 1}."
+    elsif position + number_of_elements > self.count
+      "Error: Not enough sounds to return."
     else
       current_node = @head
       position.times do
@@ -113,14 +112,14 @@ class LinkedList
   end
 
   def includes?(sound)
-    answer = nil
-    if @head == nil
-      false
+    answer = false
+    if !@head
+      answer
     else
       iterations = self.count
       current_node = @head
       iterations.times do
-        current_node.data == sound ? answer = true : nil
+        answer = true if current_node.data == sound
         current_node = current_node.next_node
       end
       answer == true ? true : false
@@ -128,11 +127,11 @@ class LinkedList
   end
   
   def find_last_node
-    if @head == nil
-      nil
+    if !@head
+      "Error: empty list."
     else
       current_node = @head
-      until current_node.next_node == nil
+      until !current_node.next_node
         current_node = current_node.next_node
       end
       current_node
