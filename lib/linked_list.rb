@@ -6,12 +6,17 @@ class LinkedList
   end
 
   def append(sound)
-    if !@head
-      @head = Node.new(sound)
+    valid_sound = check_for_sound(sound)
+    if valid_sound == true
+      if !@head
+        @head = Node.new(sound)
+      else
+        self.find_last_node.next_node = Node.new(sound)
+      end
+      sound
     else
-      self.find_last_node.next_node = Node.new(sound)
+      'Error: Not a valid sound.'
     end
-    sound
   end
 
   def prepend(sound)
@@ -143,7 +148,7 @@ class LinkedList
     valid_sound = false
     file = File.open(filename)
     File.foreach(filename) do |line|
-      # convert line to string?
+      line.chomp!.to_s
       valid_sound = true if line == sound
     end
     file.close
