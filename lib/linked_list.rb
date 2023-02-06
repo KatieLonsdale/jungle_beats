@@ -137,4 +137,16 @@ class LinkedList
       current_node
     end
   end
+
+  def check_for_sound(sound)
+    filename = 'iteration_4_beats.txt'
+    valid_sound = false
+    file = File.open(filename)
+    File.foreach(filename) do |line|
+      # convert line to string?
+      valid_sound = true if line == sound
+    end
+    file.close
+    valid_sound
+  end
 end
