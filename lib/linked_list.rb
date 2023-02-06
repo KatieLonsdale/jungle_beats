@@ -20,33 +20,43 @@ class LinkedList
   end
 
   def prepend(sound)
-    if !@head
-      @head = Node.new(sound)
+    valid_sound = check_for_sound(sound)
+    if valid_sound == true
+      if !@head
+        @head = Node.new(sound)
+      else
+        new_head = Node.new(sound)
+        new_head.next_node = @head
+        @head = new_head
+      end
+      sound
     else
-      new_head = Node.new(sound)
-      new_head.next_node = @head
-      @head = new_head
+      'Error: Not a valid sound.'
     end
-    sound
   end
 
   def insert(position, sound)
-    if !@head
-      @head = Node.new(sound)
-      sound
-    elsif position > self.count
-      "Error: Position does not exist. Please choose an index position 0-#{self.count}."
-    else
-      previous_node = nil
-      following_node = @head
-      position.times do
-        previous_node = following_node
-        following_node = following_node.next_node
+    valid_sound = check_for_sound(sound)
+    if valid_sound == true
+      if !@head
+        @head = Node.new(sound)
+        sound
+      elsif position > self.count
+        "Error: Position does not exist. Please choose an index position 0-#{self.count}."
+      else
+        previous_node = nil
+        following_node = @head
+        position.times do
+          previous_node = following_node
+          following_node = following_node.next_node
+        end
+        new_node = Node.new(sound)
+        previous_node.next_node = new_node
+        new_node.next_node = following_node
+        sound
       end
-      new_node = Node.new(sound)
-      previous_node.next_node = new_node
-      new_node.next_node = following_node
-      sound
+    else
+      'Error: Not a valid sound.'
     end
   end
 
@@ -148,7 +158,7 @@ class LinkedList
     valid_sound = false
     file = File.open(filename)
     File.foreach(filename) do |line|
-      line.chomp!.to_s
+      line.chomp!
       valid_sound = true if line == sound
     end
     file.close
