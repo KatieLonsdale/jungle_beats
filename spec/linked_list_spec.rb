@@ -229,5 +229,17 @@ RSpec.describe LinkedList do
       expect(list.find_last_node).to eq('Error: empty list.')
     end
   end
+
+  describe '#check_for_sound' do
+    it 'only appends valid sounds' do
+      list = LinkedList.new
+
+      list.append('deep')
+      # list.append('Mississippi')
+
+      expect(list.append('Mississippi')).to eq('Error: Not a valid sound.')
+
+    end
+  end
   
 end
