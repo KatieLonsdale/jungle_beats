@@ -235,10 +235,10 @@ RSpec.describe LinkedList do
       list = LinkedList.new
 
       list.append('deep')
-      # list.append('Mississippi')
 
       expect(list.append('Mississippi')).to eq('Error: Not a valid sound.')
-
+      expect(list.prepend('Mississippi')).to eq('Error: Not a valid sound.')
+      expect(list.insert(1, 'Mississippi')).to eq('Error: Not a valid sound.')
     end
   end
   
