@@ -108,7 +108,7 @@ class LinkedList
   end
 
   def find(position, number_of_elements)
-    if self.count <= position
+    if self.count <= position || position < 0
       "Error: Position does not exist. Please choose an index position 0-#{self.count - 1}."
     elsif position + number_of_elements > self.count
       "Error: Not enough sounds to return."
