@@ -96,5 +96,38 @@ RSpec.describe LinkedList do
 
       expect(jb.play).to eq 6
     end
+
+    it 'allows you to set the rate' do
+      jb = JungleBeat.new
+
+      expect(jb.rate).to eq 500
+
+      jb.rate = 100
+
+      expect(jb.rate).to eq 100
+    end
+
+    it 'allows you to set the voice' do
+      jb = JungleBeat.new
+
+      expect(jb.voice).to eq('Boing')
+
+      jb.voice = 'Daniel'
+
+      expect(jb.voice).to eq('Daniel')
+    end
   end
+
+  # describe 'reset_rate' do
+  #   it 'sets rate list will play at' do
+  #     jb = JungleBeat.new
+      
+  #     expect(jb.rate).to eq 100
+
+  #     expect(jb.reset_rate).to eq 500
+  #     expect(jb.rate).to eq 500
+  #   end
+  # end
+
+
 end
