@@ -73,7 +73,8 @@ RSpec.describe LinkedList do
       list.append('plop')
       list.append('suu')
       
-      expect(list.insert(3, "woo")).to eq('Error: Position does not exist. Please choose an index position 0-2.')
+      expect(list.insert(3, "woo")).
+      to eq('Error: Position does not exist. Please choose an index position 0-2.')
     end
 
   end
@@ -174,7 +175,10 @@ RSpec.describe LinkedList do
       list.append('woo')
       list.append('shi')
 
-      expect(list.find(7, 1)).to eq('Error: Position does not exist. Please choose an index position 0-2.')
+      expect(list.find(7, 1)).
+      to eq('Error: Position does not exist. Please choose an index position 0-2.')
+      expect(list.find(-1,2)).
+      to eq('Error: Position does not exist. Please choose an index position 0-2.')
     end
 
     it 'returns error message if not enough nodes to return'do
