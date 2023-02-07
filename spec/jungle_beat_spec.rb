@@ -17,6 +17,18 @@ RSpec.describe LinkedList do
       expect(jb.list).to be_instance_of(LinkedList)
       expect(jb.list.head).to be(nil)
     end
+
+    it 'can accept an argument' do
+      jb = JungleBeat.new('deep doo ditt')
+
+      expect(jb.all).to eq('deep doo ditt')
+    end
+    
+    it 'does not need an argument' do
+      jb = JungleBeat.new
+
+      expect(jb.class).to eq(JungleBeat)
+    end
   end
 
   describe '#append' do
@@ -36,6 +48,32 @@ RSpec.describe LinkedList do
       expect(jb.list.find_last_node.data).to eq('shu')
     end
 
+    it 'returns number of successfully inserted sounds' do
+      jb = JungleBeat.new
+
+      expect(jb.append('deep doo ditt')).to eq 3
+      expect(jb.append('Mississippi')).to eq 0
+      expect(jb.all).to eq('deep doo ditt')
+    end
+  end
+
+  describe '#prepend' do
+    it 'adds multiple nodes to front of list' do
+      jb = JungleBeat.new
+
+      jb.append('woo hoo')
+      jb.prepend('tee tee')
+      # insert words in order?
+
+      expect(jb.all).to eq('tee tee woo hoo')
+    end
+
+    it 'returns number of successfully inserted sounds' do
+      jb = JungleBeat.new
+
+      expect(jb.prepend('deep doo')).to eq 2
+      expect(jb.prepend('not good words')).to eq 0
+    end
   end
 
   describe '#count' do
@@ -52,14 +90,77 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe '#all' do
+    it 'returns string of nodes in list' do
+      jb = JungleBeat.new
+
+      jb.append('deep doo ditt')
+      
+      expect(jb.all).to eq('deep doo ditt')
+    end
+  end
+
   describe '#play' do
     it 'plays the list' do
       jb = JungleBeat.new
 
       jb.append('deep doo ditt woo hoo shu')
 
-      jb.play
-      # how to test this?
+      expect(jb.play).to eq 6
+    end
+
+    it 'allows you to set the rate' do
+      jb = JungleBeat.new
+
+      expect(jb.rate).to eq 500
+
+      jb.rate = 100
+
+      expect(jb.rate).to eq 100
+    end
+
+    it 'allows you to set the voice' do
+      jb = JungleBeat.new
+
+      expect(jb.voice).to eq('Boing')
+
+      jb.voice = 'Daniel'
+
+      expect(jb.voice).to eq('Daniel')
+    end
+
+    # test for if string is empty
+  end
+
+  describe '#reset_rate' do
+    it 'resets rate to 500' do
+      jb = JungleBeat.new
+
+      expect(jb.rate).to eq 500
+
+      jb.rate = 100
+      
+      expect(jb.rate).to eq 100
+
+      jb.reset_rate
+      
+      expect(jb.rate).to eq 500
+    end
+  end
+
+  describe '#reset_voice' do
+    it 'resets the voice to Boing' do
+      jb = JungleBeat.new
+
+      expect(jb.voice).to eq('Boing')
+
+      jb.voice = 'Daniel'
+
+      expect(jb.voice).to eq('Daniel')
+
+      jb.reset_voice
+
+      expect(jb.voice).to eq('Boing')
     end
   end
 end
