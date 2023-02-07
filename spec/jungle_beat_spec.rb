@@ -62,10 +62,9 @@ RSpec.describe LinkedList do
       jb = JungleBeat.new
 
       jb.append('woo hoo')
-      jb.prepend('tee tee')
-      # insert words in order?
+      jb.prepend('tee dee')
 
-      expect(jb.all).to eq('tee tee woo hoo')
+      expect(jb.all).to eq('tee dee woo hoo')
     end
 
     it 'returns number of successfully inserted sounds' do
@@ -128,8 +127,6 @@ RSpec.describe LinkedList do
 
       expect(jb.voice).to eq('Daniel')
     end
-
-    # test for if string is empty
   end
 
   describe '#reset_rate' do
