@@ -63,7 +63,6 @@ RSpec.describe LinkedList do
 
       jb.append('woo hoo')
       jb.prepend('tee tee')
-      # insert words in order?
 
       expect(jb.all).to eq('tee tee woo hoo')
     end
@@ -128,8 +127,6 @@ RSpec.describe LinkedList do
 
       expect(jb.voice).to eq('Daniel')
     end
-
-    # test for if string is empty
   end
 
   describe '#reset_rate' do
