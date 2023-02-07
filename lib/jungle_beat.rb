@@ -1,8 +1,11 @@
 class JungleBeat
   attr_reader :list
+  attr_accessor :rate, :voice
 
   def initialize
     @list = LinkedList.new
+    @rate = 500
+    @voice = 'Boing'
   end
 
   def append(sound_string)
@@ -63,5 +66,9 @@ class JungleBeat
     `say -r 500 -v Boing #{list.to_string}`
     self.count
   end
+
+  # def reset_rate
+  #   @rate = 500
+  # end
 
 end
