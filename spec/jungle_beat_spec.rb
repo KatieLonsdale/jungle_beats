@@ -94,7 +94,7 @@ RSpec.describe LinkedList do
 
       jb.append('deep doo ditt woo hoo shu')
 
-      jb.play
+      expect(jb.play).to eq 6
     end
   end
 end
