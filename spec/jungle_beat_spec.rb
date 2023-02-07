@@ -36,7 +36,28 @@ RSpec.describe LinkedList do
       expect(jb.list.find_last_node.data).to eq('shu')
     end
 
+    it 'returns number of successfully inserted sounds' do
+      jb = JungleBeat.new
+
+      expect(jb.append('deep doo ditt')).to eq 3
+
+      expect(jb.append('Mississippi')).to eq 0
+
+      expect(jb.all).to eq('deep doo ditt')
+    end
   end
+
+  # describe '#prepend' do
+  #   it 'adds multiple nodes to front of list' do
+  #     jb = JungleBeat.new
+
+  #     jb.append('woo hoo')
+  #     # jb.prepend('deep doo')
+
+  #     expect(jb.prepend('deep doo')).to eq('deep doo')
+  #     expect(jb.all).to eq('deep doo woo hoo')
+  #   end
+  # end
 
   describe '#count' do
     it 'counts list length' do
@@ -52,6 +73,16 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe '#all' do
+    it 'returns string of nodes in list' do
+      jb = JungleBeat.new
+
+      jb.append('deep doo ditt')
+      
+      expect(jb.all).to eq('deep doo ditt')
+    end
+  end
+
   describe '#play' do
     it 'plays the list' do
       jb = JungleBeat.new
@@ -59,7 +90,6 @@ RSpec.describe LinkedList do
       jb.append('deep doo ditt woo hoo shu')
 
       jb.play
-      # how to test this?
     end
   end
 end
