@@ -7,20 +7,33 @@ class JungleBeat
 
   def append(sound_string)
     sound = ''
+    inserted_beats = 0
     sound_string.each_char do |character|
       if character == ' '
-        @list.append(sound)
+        result = @list.append(sound)
+          if result == sound
+            inserted_beats += 1
+          else
+          end
         sound = ''
       else
         sound = sound.concat("#{character}")
       end
     end
-    @list.append(sound)
-    sound_string
+    result = @list.append(sound)
+      if result == sound
+        inserted_beats += 1
+      else
+      end
+    inserted_beats
   end
 
   def count
     list.count
+  end
+
+  def all
+    list.to_string
   end
 
   def play
