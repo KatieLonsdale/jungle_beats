@@ -67,8 +67,8 @@ class JungleBeat
     self.count
   end
 
-  # def reset_rate
-  #   @rate = 500
-  # end
+  def reset_rate
+    @rate = 500
+  end
 
 end
