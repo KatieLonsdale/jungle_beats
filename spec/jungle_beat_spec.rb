@@ -62,9 +62,9 @@ RSpec.describe LinkedList do
       jb = JungleBeat.new
 
       jb.append('woo hoo')
-      jb.prepend('tee tee')
+      jb.prepend('tee dee')
 
-      expect(jb.all).to eq('tee tee woo hoo')
+      expect(jb.all).to eq('tee dee woo hoo')
     end
 
     it 'returns number of successfully inserted sounds' do

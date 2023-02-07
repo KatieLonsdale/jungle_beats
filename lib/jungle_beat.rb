@@ -36,7 +36,7 @@ class JungleBeat
   def prepend(sound_string)
     sound = ''
     inserted_beats = 0
-    sound_string.each_char do |character|
+    sound_string.reverse!.each_char do |character|
       if character == ' '
         result = @list.prepend(sound)
           if result == sound
@@ -45,7 +45,7 @@ class JungleBeat
           end
         sound = ''
       else
-        sound = sound.concat("#{character}")
+        sound = sound.prepend("#{character}")
       end
     end
     result = @list.prepend(sound)
