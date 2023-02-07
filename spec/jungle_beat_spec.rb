@@ -17,7 +17,18 @@ RSpec.describe LinkedList do
       expect(jb.list).to be_instance_of(LinkedList)
       expect(jb.list.head).to be(nil)
     end
-    # can accept an argument or not
+
+    it 'can accept an argument' do
+      jb = JungleBeat.new('deep doo ditt')
+
+      expect(jb.all).to eq('deep doo ditt')
+    end
+    
+    it 'does not need an argument' do
+      jb = JungleBeat.new
+
+      expect(jb.class).to eq(JungleBeat)
+    end
   end
 
   describe '#append' do
