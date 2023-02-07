@@ -117,6 +117,8 @@ RSpec.describe LinkedList do
 
       expect(jb.voice).to eq('Daniel')
     end
+
+    # test for if string is empty
   end
 
   describe '#reset_rate' do
@@ -150,6 +152,4 @@ RSpec.describe LinkedList do
       expect(jb.voice).to eq('Boing')
     end
   end
-
-
 end
