@@ -17,6 +17,7 @@ RSpec.describe LinkedList do
       expect(jb.list).to be_instance_of(LinkedList)
       expect(jb.list.head).to be(nil)
     end
+    # can accept an argument or not
   end
 
   describe '#append' do
@@ -118,7 +119,7 @@ RSpec.describe LinkedList do
     end
   end
 
-  describe 'reset_rate' do
+  describe '#reset_rate' do
     it 'resets rate to 500' do
       jb = JungleBeat.new
 
@@ -131,6 +132,22 @@ RSpec.describe LinkedList do
       jb.reset_rate
       
       expect(jb.rate).to eq 500
+    end
+  end
+
+  describe '#reset_voice' do
+    it 'resets the voice to Boing' do
+      jb = JungleBeat.new
+
+      expect(jb.voice).to eq('Boing')
+
+      jb.voice = 'Daniel'
+
+      expect(jb.voice).to eq('Daniel')
+
+      jb.reset_voice
+
+      expect(jb.voice).to eq('Boing')
     end
   end
 
