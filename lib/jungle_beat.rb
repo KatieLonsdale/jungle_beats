@@ -28,6 +28,29 @@ class JungleBeat
     inserted_beats
   end
 
+  def prepend(sound_string)
+    sound = ''
+    inserted_beats = 0
+    sound_string.each_char do |character|
+      if character == ' '
+        result = @list.prepend(sound)
+          if result == sound
+            inserted_beats += 1
+          else
+          end
+        sound = ''
+      else
+        sound = sound.concat("#{character}")
+      end
+    end
+    result = @list.prepend(sound)
+      if result == sound
+        inserted_beats += 1
+      else
+      end
+    inserted_beats
+  end
+
   def count
     list.count
   end
