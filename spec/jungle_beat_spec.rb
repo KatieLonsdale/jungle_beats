@@ -40,24 +40,29 @@ RSpec.describe LinkedList do
       jb = JungleBeat.new
 
       expect(jb.append('deep doo ditt')).to eq 3
-
       expect(jb.append('Mississippi')).to eq 0
-
       expect(jb.all).to eq('deep doo ditt')
     end
   end
 
-  # describe '#prepend' do
-  #   it 'adds multiple nodes to front of list' do
-  #     jb = JungleBeat.new
+  describe '#prepend' do
+    it 'adds multiple nodes to front of list' do
+      jb = JungleBeat.new
 
-  #     jb.append('woo hoo')
-  #     # jb.prepend('deep doo')
+      jb.append('woo hoo')
+      jb.prepend('tee tee')
+      # insert words in order?
 
-  #     expect(jb.prepend('deep doo')).to eq('deep doo')
-  #     expect(jb.all).to eq('deep doo woo hoo')
-  #   end
-  # end
+      expect(jb.all).to eq('tee tee woo hoo')
+    end
+
+    it 'returns number of successfully inserted sounds' do
+      jb = JungleBeat.new
+
+      expect(jb.prepend('deep doo')).to eq 2
+      expect(jb.prepend('not good words')).to eq 0
+    end
+  end
 
   describe '#count' do
     it 'counts list length' do
