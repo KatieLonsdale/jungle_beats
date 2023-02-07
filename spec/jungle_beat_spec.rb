@@ -118,16 +118,21 @@ RSpec.describe LinkedList do
     end
   end
 
-  # describe 'reset_rate' do
-  #   it 'sets rate list will play at' do
-  #     jb = JungleBeat.new
-      
-  #     expect(jb.rate).to eq 100
+  describe 'reset_rate' do
+    it 'resets rate to 500' do
+      jb = JungleBeat.new
 
-  #     expect(jb.reset_rate).to eq 500
-  #     expect(jb.rate).to eq 500
-  #   end
-  # end
+      expect(jb.rate).to eq 500
+
+      jb.rate = 100
+      
+      expect(jb.rate).to eq 100
+
+      jb.reset_rate
+      
+      expect(jb.rate).to eq 500
+    end
+  end
 
 
 end
