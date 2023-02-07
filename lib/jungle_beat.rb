@@ -1,9 +1,11 @@
 class JungleBeat
-  attr_reader :list
+  attr_reader :list, :sound_string
   attr_accessor :rate, :voice
 
-  def initialize
+  def initialize(sound_string = nil)
     @list = LinkedList.new
+    @sound_string = sound_string
+      self.append(sound_string) if @sound_string
     @rate = 500
     @voice = 'Boing'
   end
@@ -63,8 +65,11 @@ class JungleBeat
   end
 
   def play
-    `say -r #{@rate} -v #{@voice} #{list.to_string}`
-    self.count
+    if list.to_string != ''
+      `say -r #{@rate} -v #{@voice} #{list.to_string}`
+      self.count
+    else
+    end
   end
 
   def reset_rate
